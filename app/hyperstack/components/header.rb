@@ -48,7 +48,7 @@ class Header < HyperComponent
         Mui::IconButton(edge: :start, color: :inherit, aria: {label: :menu, controls: :menu, haspopup: true}) do
           Icon::Menu(styles(:menu_icon), id: :nav_menu)
         end.on(:click) { Header.open_menu! }
-        Mui::Typography(styles(:hero)) { 'Join the STOTS Sustained Giving Program Today' }
+        Mui::Typography(styles(:hero)) { 'Become a STOTS Sustainer Today' }
       end
     end
     Mui::Menu(:keepMounted, id: :menu, anchorEl: Header.menu_anchor, open: Header.menu_open?) do

@@ -18,7 +18,7 @@ body:after {
   left:0;
   right:0;
   z-index:-1; /* needed to keep in the background */
-  background: url('https://cdni.rbth.com/rbthmedia/images/2020.03/article/5e79da0a85600a7fc0544a73.jpg') center center;
+  background: url('https://www.stots.edu/display_image.php?ext=png&relativeimage=images/seminary/facebook.png&archive=0&final_h=628&final_w=1200&percent=0') center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

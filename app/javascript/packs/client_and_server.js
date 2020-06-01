@@ -12,3 +12,4 @@ Mui = require('@material-ui/core')
 Icon = require('@material-ui/icons')
 Remarkable = require('remarkable').Remarkable
 mapboxgl = require('mapbox-gl')
+Thermometer = require('react-thermometer')
