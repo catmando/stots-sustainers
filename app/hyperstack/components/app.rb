@@ -51,7 +51,7 @@ class App < HyperComponent
       Header()
       Switch() do
         Route('/home',            mounts: PWA.ready_to_update? ? Reloading : Home)
-        Route('/give',            mounts: Give)
+        Route('/give')            { Give(key: 'its-the-same') }
         Route('*')                { mutate Redirect('/home') }
       end
       Footer() unless App.location.pathname == '/'
