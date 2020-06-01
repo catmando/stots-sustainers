@@ -61,7 +61,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "CeaselessPrayer_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "STOTSSustainers_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 
@@ -92,7 +92,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.web_socket_server_url = "wss://ceaselessprayer.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://ceaselessprayer.herokuapp.com', 'http://ceaselessprayer.herokuapp.com']
+  config.web_socket_server_url = "wss://stots-sustainers.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://stots-sustainers.herokuapp.com', 'http://stots-sustainers.herokuapp.com']
 
 end

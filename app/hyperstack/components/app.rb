@@ -9,8 +9,8 @@ class App < HyperComponent
   include Hyperstack::Component::IsomorphicHelpers
 
   before_first_mount do
-    @last_wakeup = Time.now
-    every(0.25) { check_wakeup }
+    # @last_wakeup = Time.now
+    # every(0.25) { check_wakeup }
   end
 
   class << self
@@ -27,7 +27,6 @@ class App < HyperComponent
       puts "checking wakeup"
       unless Time.now > @last_wakeup + 3.seconds
         puts "*********************** RELOADING AFTER SLEEP ****************************"
-        debugger
         `window.location.reload()`
         @last_wakeup = nil
       end
@@ -51,14 +50,8 @@ class App < HyperComponent
     DIV(class: :box, style: { height: WindowDims.height+1 }) do
       Header()
       Switch() do
-        Route('/about',           mounts: About)
-        Route('/reload',          mounts: Reloading)
-        Route('/pray',            mounts: Pray)
         Route('/home',            mounts: PWA.ready_to_update? ? Reloading : Home)
-        Route('/change-log',      mounts: ChangeLog)
-        Route('/frequent-cities', mounts: FrequentCities)
-        Route('/recent-cities',   mounts: RecentCities)
-        Route('/done',            mounts: Done)
+        Route('/give',            mounts: Give)
         Route('*')                { mutate Redirect('/home') }
       end
       Footer() unless App.location.pathname == '/'

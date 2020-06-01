@@ -1,10 +1,4 @@
 class Footer < HyperComponent
-  # The footer has four states:
-  # in most pages it has a button to bring you to the prayer page
-  # on the prayer page you have a done button instead
-  # on the done page (after praying) there is a final done button
-  # when this button is clicked the main menu is popped up and the button is hidden
-
   styles do
     # override default button style if we have enough space
     { button:    { minHeight: 60, fontSize: 40 } } if WindowDims.area == :large
@@ -32,15 +26,10 @@ class Footer < HyperComponent
   render do
     Mui::Container(styles(:container), class: 'row footer') do
       Mui::Grid(:container, spacing: 1) do
-        if App.location.pathname == '/pray'
-          # only on the pray page
-          button('Done')      { Footer.push_path('/done') }
-        elsif App.location.pathname != '/done'
-          # on any other page but Done
-          button('Pray Now!') { Footer.push_path('/pray') }
-        elsif !Header.menu_open?
-          # clicking done will open the menu, which will hide the done button
-          button('Done')      { Header.open_menu! }
+        if App.location.pathname == '/give'
+          button('Done')      { Footer.push_path('/home') }
+        else
+          button('Please Give') { Footer.push_path('/give') }
         end
       end
     end

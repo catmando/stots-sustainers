@@ -42,34 +42,22 @@ class Header < HyperComponent
     end
   end
 
-  def install_link
-    return unless PWA.ready_to_install?
-
-    Mui::MenuItem(styles(:menu_item)) { 'Add to Home Screen' }
-    .on(:click) do
-      PWA.confirm_install!
-      Footer.push_path('/home')
-      Header.close_menu!
-    end
-  end
-
   render(DIV, id: :app_bar, class: 'row header', style: {zIndex: 99, marginBottom: 5}) do
     Mui::AppBar(styles(:app_bar), position: :relative, id: 'header') do
       Mui::Toolbar(styles(:tool_bar)) do
         Mui::IconButton(edge: :start, color: :inherit, aria: {label: :menu, controls: :menu, haspopup: true}) do
           Icon::Menu(styles(:menu_icon), id: :nav_menu)
         end.on(:click) { Header.open_menu! }
-        Mui::Typography(styles(:hero)) { 'Join us in world wide prayer for healing' }
+        Mui::Typography(styles(:hero)) { 'Join the STOTS Sustained Giving Program Today' }
       end
     end
     Mui::Menu(:keepMounted, id: :menu, anchorEl: Header.menu_anchor, open: Header.menu_open?) do
       menu_link('/home', 'Home')
-      menu_link('/pray', 'Prayers')
-      menu_link('/about', 'About')
-      menu_link('/frequent-cities', 'Frequent Cities')
-      menu_link('/recent-cities', 'Recent Cities')
-      install_link
-      menu_link('/change-log', 'Change Log')
+      # menu_link('/pray', 'Prayers')
+      # menu_link('/about', 'About')
+      # menu_link('/frequent-cities', 'Frequent Cities')
+      # menu_link('/recent-cities', 'Recent Cities')
+      # menu_link('/change-log', 'Change Log')
     end.on(:close) { Header.close_menu! } if Header.menu_open?
   end
 end
