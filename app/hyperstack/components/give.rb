@@ -10,7 +10,7 @@ class Give < HyperComponent
       title: "Donation Form",
       style: {
         backgroundColor: :white,
-        maxWidth: 600, minWidth: 320, minHeight: 1200,
+        maxWidth: 600, minWidth: 320, minHeight: 150,
         width: '100%', height: '100%',
         border: :none
       }
