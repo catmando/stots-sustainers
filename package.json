@@ -1,0 +1,24 @@
+{
+  "name": "CeaselessPrayer",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.9.10",
+    "@rails/webpacker": "5.0.1",
+    "create-react-class": "^15.6.3",
+    "jquery": "^3.4.1",
+    "mapbox-gl": "^1.10.1",
+    "muicss": "^0.10.1",
+    "react": "16",
+    "react-create-class": "^1.0.0",
+    "react-dom": "16",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react_ujs": "^2.5.0",
+    "remarkable": "^2.0.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
+}

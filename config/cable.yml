@@ -1,0 +1,10 @@
+development:
+  adapter: async
+
+test:
+  adapter: async
+
+production:
+  adapter: redis
+  url: redis://redistogo:dac310a1ae952be153c14fc154e3cdee@hammerjaw.redistogo.com:10149/
+  channel_prefix: CeaselessPrayer_production
