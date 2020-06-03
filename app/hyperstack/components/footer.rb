@@ -1,8 +1,10 @@
 class Footer < HyperComponent
   styles do
     # override default button style if we have enough space
-    { button:    { minHeight: 60, fontSize: 40 } } if WindowDims.area == :large
-    { container: { marginTop: 5, marginBottom: 5, width: '100%' } }
+    {
+      button: WindowDims.area == :large ? { minHeight: 60, fontSize: 40 } : {},
+      container: { marginTop: 5, marginBottom: 5, width: '100%' }
+    }
   end
 
   def size
@@ -12,9 +14,11 @@ class Footer < HyperComponent
   def button(text, &block)
     Mui::Grid(xs: 0, lg: 3)
     Mui::Grid(:item, xs: 12, lg: 6) do
-      Mui::Button(:fullWidth, styles(:button), size: size, variant: :contained, color: :primary) do
-        text
-      end.on(:click, &block)
+      #DIV(styles(:button)) do
+        Mui::Button(:fullWidth, styles(:button), size: size, variant: :contained, color: :primary) do
+          text
+        end.on(:click, &block)
+      #end
     end
     Mui::Grid(xs: 0, lg: 3)
   end
@@ -26,9 +30,7 @@ class Footer < HyperComponent
   render do
     Mui::Container(styles(:container), class: 'row footer') do
       Mui::Grid(:container, spacing: 1) do
-        if App.location.pathname == '/give'
-          button('Done')      { Footer.push_path('/home') }
-        else
+        unless App.location.pathname == '/give'
           button('Please Give') { Footer.push_path('/give') }
         end
       end
