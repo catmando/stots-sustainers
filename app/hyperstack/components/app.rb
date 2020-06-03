@@ -47,11 +47,12 @@ class App < HyperComponent
     # dynamically set height so it works on mobile devices like iphone / safari
     # which does not use 100vh properly.
 
-    DIV(class: :box, style: { height: WindowDims.height+1 }) do
+    DIV(class: :box, style: { height: WindowDims.height + 1 }) do
       Header()
       Switch() do
         Route('/home',            mounts: PWA.ready_to_update? ? Reloading : Home)
-        Route('/give')            { Give(key: 'its-the-same') }
+        Route('/give')            { Give(key: 'recurring-gift', id: "498b0382-2043-41a3-9d49-924622f40ba4") }
+        Route('/one-time-gift')   { Give(key: 'one-time-gift', id: "ead51868-d729-468c-acf4-1f5fd4c74714") }
         Route('*')                { mutate Redirect('/home') }
       end
       Footer() unless App.location.pathname == '/'
