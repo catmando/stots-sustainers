@@ -1,5 +1,5 @@
 class IncomingMailController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  #skip_before_filter :verify_authenticity_token
 
   def create
     Rails.logger.log params[:envelope][:to] # print the to field to the logs
