@@ -25,11 +25,15 @@ class Home < HyperComponent
   end
 
   def total_gifts
-    Gift.inject(0) { |total, gift| total + gift.amount }
+    Gift.inject(0) { |total, gift| total + gift.amount } * 12
   end
 
   def thermometer_height
     (WindowDims.height - Header.height - 180)
+  end
+
+  def format_number(number)
+    number.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
   end
 
   def thermometer
@@ -37,9 +41,9 @@ class Home < HyperComponent
     puts percent_of_goal
     DIV(class: 'donation-meter') do
       STRONG { 'Our Goal' }
-      STRONG(class: :goal) { '$1000' }
+      STRONG(class: :goal) { '$12,000' }
       SPAN(class: :glass) do
-        STRONG(class: :total, style: { bottom: percent_of_goal }) { "$#{total_gifts}"}
+        STRONG(class: :total, style: { bottom: percent_of_goal }) { "$#{format_number(total_gifts)}" }
         SPAN(class: :amount, style: { height: percent_of_goal })
       end
       DIV(class: :bulb) do
@@ -60,7 +64,7 @@ class Home < HyperComponent
 
           DIV(styles(:message)) do
             P { "Welcome to the STOTS Board Meeting. Please consider a sustaining monthly gift."}
-            P { "Our goal for the meeting is $1000 in new monthly gifts." }
+            P { "Our goal for the meeting is $12,000 annually in new sustaining gifts." }
             P { "Please give now, and give generously!" }
             P(style: {marginTop: 20}) { "So far we have raised $#{total_gifts}" }
           end
