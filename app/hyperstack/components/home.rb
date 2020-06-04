@@ -37,7 +37,7 @@ class Home < HyperComponent
   end
 
   def thermometer
-    percent_of_goal = "#{total_gifts/1000.0*100}%"
+    percent_of_goal = "#{total_gifts/12000.0*100}%"
     puts percent_of_goal
     DIV(class: 'donation-meter') do
       STRONG { 'Our Goal' }
