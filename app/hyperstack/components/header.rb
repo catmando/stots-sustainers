@@ -45,6 +45,13 @@ class Header < HyperComponent
     end
   end
 
+  before_mount do
+    # seems like a bug in hyperstack - can't get resources_loading? to catch the menu items being
+    # loaded so we will prefetch them here.
+    Campaign.each { |c| [c.slug, c.name] }
+    Campaign.last
+  end
+
   render(DIV, id: :app_bar, class: 'row header', style: {zIndex: 99, marginBottom: 5}) do
     Mui::AppBar(styles(:app_bar), position: :relative, id: 'header') do
       Mui::Toolbar(styles(:tool_bar)) do
