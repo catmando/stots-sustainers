@@ -1,4 +1,6 @@
 class Header < HyperComponent
+  include Hyperstack::Router::Helpers
+
   def self.open_menu!
     mutate @menu_up = true
   end
@@ -33,7 +35,8 @@ class Header < HyperComponent
   end
 
   def menu_link(path, text)
-    return if path == App.location.pathname
+    #return if App.campaign&.slug.blank?
+    return if "/#{App.campaign.slug}/#{path}" == App.location.pathname
 
     Mui::MenuItem(styles(:menu_item)) { text }
     .on(:click) do
@@ -47,17 +50,18 @@ class Header < HyperComponent
       Mui::Toolbar(styles(:tool_bar)) do
         Mui::IconButton(edge: :start, color: :inherit, aria: {label: :menu, controls: :menu, haspopup: true}) do
           Icon::Menu(styles(:menu_icon), id: :nav_menu)
-        end.on(:click) { Header.open_menu! }
+        end.on(:click) { Header.open_menu! unless App.campaign&.slug.blank? }
         Mui::Typography(styles(:hero)) { 'Become a STOTS Sustainer Today' }
       end
     end
     Mui::Menu(:keepMounted, id: :menu, anchorEl: Header.menu_anchor, open: Header.menu_open?) do
-      menu_link('/home', 'Home')
-      # menu_link('/pray', 'Prayers')
-      # menu_link('/about', 'About')
-      # menu_link('/frequent-cities', 'Frequent Cities')
-      # menu_link('/recent-cities', 'Recent Cities')
-      # menu_link('/change-log', 'Change Log')
+      menu_link('home',            'Home')
+      menu_link('day-in-the-life', 'A Day In The Life')
+      menu_link('mission',         'Our Mission')
+      menu_link('from-the-rector', 'A Message From The Rector')
+      menu_link('why-support',     'Why Support STOTS?')
+      menu_link('give',            'Give Generously')
+      menu_link('pick-campaign',   'Change Event')
     end.on(:close) { Header.close_menu! } if Header.menu_open?
   end
 end
