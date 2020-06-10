@@ -39,26 +39,6 @@ class Footer < HyperComponent
     Mui::Grid(xs: 0, lg: 1)
   end
 
-  def choose_event
-    Mui::Grid(xs: 0, lg: 3)
-    Mui::Grid(:item, xs: 12, lg: 6) do
-      Mui::FormControl(variant: :outlined, style: {width: '100%', fontSize: 20}) do
-        Mui::InputLabel(htmlFor: "select-event-label") { 'Select Event' }
-        Mui::Select(
-          style: {background: :white, width: '100%', fontSize: 10},
-          labelId: "select-event-label",
-          id: 'select-event'
-         ) do
-          Campaign.each do |campaign|
-            Mui::MenuItem(value: campaign.slug, style: {whiteSpace: :normal}) { campaign.name }
-            Mui::Divider() unless campaign == Campaign.last
-          end
-        end.on(:click) { |evt| App.history.push("/#{evt.target.value}") }
-      end
-    end
-    Mui::Grid(xs: 0, lg: 3)
-  end
-
   def self.push_path(path)
     mutate App.history.push(
       "#{'/' + App.campaign.slug unless path == 'pick-campaign'}/#{path}"
@@ -70,7 +50,7 @@ class Footer < HyperComponent
     Mui::Container(styles(:container), class: 'row footer') do
       Mui::Grid(:container, spacing: 1) do
         if pathname == '/pick-campaign'
-          choose_event
+          button('Select Event') { Header.open_menu! }
         elsif /give$/.match? pathname
           give_buttons('One Time Gift') { Footer.push_path('one-time-gift') }
         elsif /one-time-gift$/.match? pathname
