@@ -34,8 +34,8 @@ Welcome to the Herzak's Virtual Wine Tasting fundraiser.
 
 Please consider a sustaining monthly gift to St. Tikhon’s Seminary.
 
-If you give before June 30'th you will be sent a fine bottle of wine which we will taste together at
-an online virtual tasting on July 15'th.
+If you give before June 30th you will be sent a fine bottle of wine which we will taste together at
+an online virtual tasting on July 15th.
 
 Our goal is to raise $15,000 annually in new sustaining gifts, so please give generously
 
