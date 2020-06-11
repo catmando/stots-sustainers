@@ -8,11 +8,11 @@ class Campaign < ApplicationRecord
       find_by_slug('stots')
     end
 
-    def find_by_notification_email_subject(subject)
-      match_data = /^A donation has been made to (.+)-(sustainer|one-time) form$/.match(subject)
+    def find_by_notification_email(email_body)
+      match_data = /You are being notified that an online gift has been made through the (.+)-(sustainer|one-time) donation form/.match(email_body)
       slug       = match_data[1] if match_data
       campaign   = find_by_slug(slug)
-      campaign.one_time = (match_data[2] == 'one-time') if campaign
+      campaign&.one_time = (match_data[2] == 'one-time')
       campaign
     end
   end

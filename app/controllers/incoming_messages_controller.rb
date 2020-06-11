@@ -4,7 +4,7 @@ class IncomingMessagesController < ApplicationController
   def create
     puts params[:subject]
     puts params[:plain]
-    if (campaign = Campaign.find_by_notification_email_subject(params[:subject]))
+    if (campaign = Campaign.find_by_notification_email(params[:plain]))
       Gift.create_from_email(params[:plain], campaign)
     else
       puts "************* No Campaign found - email will be ignored"

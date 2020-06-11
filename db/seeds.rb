@@ -54,7 +54,7 @@ Please give now, and give generously!
 MARKDOWN
 )
 Campaign.create(
-  slug: 'stots', name: 'Not Attending Any Event', goal: 600_000,
+  slug: 'stots', name: 'Not Attending Any Event', goal: 250_000,
   sustainer_form_id: "b6fcffc0-d7f9-4ca9-893b-ba65cd22f09e",
   one_time_form_id: "d99c0b9f-4b0c-4e2a-a8ad-89b5e5aadad8",
   greeting: <<MARKDOWN
