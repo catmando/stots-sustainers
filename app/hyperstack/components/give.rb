@@ -3,7 +3,9 @@ class Give < HyperComponent
   param :id
 
   def iframe
-    src = "https://host.nxt.blackbaud.com/donor-form?formId=#{id}&envid=p-pfJFr4mVUUaa236IU4z_rQ&referral=party123"
+    src = "https://host.nxt.blackbaud.com/donor-form?"\
+          "formId=#{id}&envid=p-pfJFr4mVUUaa236IU4z_rQ&"\
+          "referral=#{`encodeURIComponent(document.location.href)`}"
     IFRAME(
       id:    "form-#{id}",
       src:   src,
