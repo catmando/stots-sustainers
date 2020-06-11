@@ -72,8 +72,8 @@ class App < HyperComponent
             Route('/:slug/day-in-the-life', mounts: DayInTheLife)
             Route('/:slug/from-the-rector', mounts: FromTheRector)
             Route('/:slug/why-support',     mounts: WhySupport)
-            Route('/:slug/give')            { Give(key: 'recurring-gift', id: "498b0382-2043-41a3-9d49-924622f40ba4") }
-            Route('/:slug/one-time-gift')   { Give(key: 'one-time-gift', id: "ead51868-d729-468c-acf4-1f5fd4c74714") }
+            Route('/:slug/give')            { Give(key: 'recurring-gift', id: App.campaign.sustainer_form_id) }
+            Route('/:slug/one-time-gift')   { Give(key: 'one-time-gift', id: App.campaign.one_time_form_id) }
             Route('/:slug/')                { mutate Redirect("#{match.params[:slug]}/home") }
           end
         end
