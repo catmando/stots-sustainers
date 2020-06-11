@@ -25,7 +25,7 @@ class PickCampaign < HyperComponent
   end
 
   def total_gifts
-    Gift.inject(0) { |total, gift| total + gift.amount }
+    Gift.inject(0) { |total, gift| total + gift.annual_amount }
   end
 
   def thermometer_height

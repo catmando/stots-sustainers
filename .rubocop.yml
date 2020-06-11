@@ -109,6 +109,9 @@ Style/BlockDelimiters:
     - proc
     - it
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
   Enabled: false

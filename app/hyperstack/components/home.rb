@@ -25,7 +25,7 @@ class Home < HyperComponent
   end
 
   def total_gifts
-    App.campaign.gifts.inject(0) { |total, gift| total + gift.amount }
+    App.campaign.gifts.inject(0) { |total, gift| total + gift.annual_amount }
   end
 
   def format_number(number)
