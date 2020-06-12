@@ -29,7 +29,7 @@ class Home < HyperComponent
   end
 
   def format_number(number)
-    "$#{number.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse}"
+    "$#{number.to_i.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse}"
   end
 
   def percent_of_goal
@@ -55,7 +55,7 @@ class Home < HyperComponent
       STRONG { 'Our Goal' }
       STRONG(class: :goal) { format_number(App.campaign.goal) }
       SPAN(class: :glass, style: {height: glass_height}) do
-        STRONG(class: :total, style: { bottom: "#{[percent_of_goal, 95].min}%" }) { format_number(total_gifts) }
+        STRONG(class: :total, style: { bottom: "#{[percent_of_goal, 92].min}%" }) { format_number(total_gifts) }
         SPAN(class: :amount, style: { height: "#{[percent_of_goal, 97].min}%" })
       end
       DIV(class: :bulb) do
