@@ -31,11 +31,11 @@ describe 'incoming mail', type: :request do
   it "accept a one time donation email" do
     transaction_id = 'a4a4ab1a-dfc7-494c-b51c-6ff759c1d244'
     post '/incoming_messages',
-         params: { plain: body("#{campaign.slug}-one-time", '$60.00', transaction_id) }
+         params: { plain: body("#{campaign.slug}-one-time", '$6,000.00', transaction_id) }
     expect(Gift.count).to eq(1)
     expect(Gift.first.attributes.symbolize_keys)
-      .to include(amount: 60.00, campaign_id: campaign.id, one_time: true, transaction_id: transaction_id)
-    expect(Gift.first.annual_amount).to eq(60)
+      .to include(amount: 6000.00, campaign_id: campaign.id, one_time: true, transaction_id: transaction_id)
+    expect(Gift.first.annual_amount).to eq(6000)
   end
 
   it "fails if the slug does not match" do
